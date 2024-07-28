@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mobile-1.css">
+    <link rel="stylesheet" href="css/global-1.css">
+    <link rel="shortcut icon" href="img/icons/instagram-1.png" type="image/x-icon">
+
+    <meta name="theme-color" content="#e1306c">
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>InstaPremium</title>
+    <style type="text/css">
+      #video-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90vw;
+        height: calc(90vw * 9 / 16); /* Proporção 16:9 */
+        background-color: #000; /* Adicionei um fundo para melhor visualização */
+        overflow: hidden;
+      }
+      #initial-overlay, #pause-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      #initial-overlay img{
+        width: 40%;
+      }
+
+      @keyframes zoom {
+        0%, 100% {
+        transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      #initial-overlay img {
+        animation: zoom 2s infinite;
+      }
+      
+      #pause-overlay img {
+        width: 30%;
+        object-fit: cover;
+      }
+      #loading-bar-container {
+        width: 90vw;
+        height: 10px;
+        background-color: #e1e1e178;
+        margin-top: 0;
+      }
+      #loading-bar {
+        width: 0;
+        height: 100%;
+        background-color: #7106d4;
+        transition: width 30s linear;
+      }
+    </style>   
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+      var player;
+      var loadingBarInterval;
+      var totalDuration = 390; // 6 minutes in seconds
+      var slowDownStartTime = totalDuration * 0.75; // 75% of total duration
+      var elapsedTime = 0;
+
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '1360',
+          width: '100%',
+          videoId: '12GB8sdhn-A',
+          playerVars: {
+            'controls': 0,
+            'rel': 0,
+            'showinfo': 0,
+            'modestbranding': 1,
+            'disablekb': 1
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      function onPlayerReady(event) {
+        document.getElementById('initial-overlay').style.display = 'flex';
+      }
+
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+          document.getElementById('pause-overlay').style.display = 'flex';
+          pauseLoadingBar();
+        } else if (event.data == YT.PlayerState.PLAYING) {
+          document.getElementById('pause-overlay').style.display = 'none';
+          startLoadingBar();
+        }
+      }
+
+      function startVideo() {
+        player.playVideo();
+        document.getElementById('initial-overlay').style.display = 'none';
+        startLoadingBar();
+      }
+
+      function togglePlayPause() {
+        var playerState = player.getPlayerState();
+        if (playerState == YT.PlayerState.PAUSED || playerState == YT.PlayerState.ENDED) {
+          player.playVideo();
+          document.getElementById('pause-overlay').style.display = 'none';
+        } else if (playerState == YT.PlayerState.PLAYING) {
+          player.pauseVideo();
+        }
+      }
+
+      function irParaProximaPagina() {
+        window.location.href = "URL_DA_PROXIMA_PAGINA";
+      }
+
+      function startLoadingBar() {
+        var bar = document.getElementById('loading-bar');
+        var btnGateway = document.getElementById('btnGateway');
+        var fastDuration = totalDuration * 0.20; // Tempo rápido até 85%
+        var slowDuration = totalDuration - fastDuration; // Tempo lento para os 15% restantes
+
+        bar.style.transition = 'width ' + fastDuration + 's linear';
+        bar.style.width = '85%';
+
+        setTimeout(function() {
+          bar.style.transition = 'width ' + slowDuration + 's ease-out';
+          bar.style.width = '100%';
+
+          setTimeout(function() {
+            btnGateway.style.display = 'block';
+          }, slowDuration * 1000); // Exibe o botão quando a barra termina de carregar
+        }, fastDuration * 1000); // Ajusta o tempo de transição após o carregamento rápido
+      }
+
+      function pauseLoadingBar() {
+        clearInterval(loadingBarInterval);
+        var bar = document.getElementById('loading-bar');
+        var computedStyle = window.getComputedStyle(bar);
+        var width = computedStyle.getPropertyValue('width');
+        bar.style.transition = 'none';
+        bar.style.width = width;
+      }
+
+      function gateway() {
+      window.location.href = "https://redirect.urusoficial.com.br/MP8GHQGRSJ8U2?a=3hKEsX7o";
+        }
+
+    </script>
+  </head>
+  <body>
+    <header id="TopHeader">
+      <h1 id="titulo">InstaPremium</h1>
+      <div id="cash"><p id="valor">R$ 112.68</p></div>
+    </header>
+
+    <div id="tudo">
+      <div id="ConteinerCentro">
+        <div id="ConteinerVideo">
+          <h2>
+            Ganhe até 7 <span>salários</span> por mês avaliando postagens no
+            <span>InstaPremium</span>!
+          </h2>
+          <div id="video-container">
+            <div id="initial-overlay" onclick="startVideo()">
+              <img src="img/icons/fplay.png" alt="Iniciar Vídeo">
+            </div>
+            <div id="pause-overlay" onclick="togglePlayPause()" style="display:none;">
+              <img src="img/icons/play.png" alt="Pause">
+            </div>
+            <div id="player"></div>
+          </div>
+          
+          <!-- Aqui vão as divs que devem aparecer somente depois do player -->
+          <div id="player"><div id="loading-bar-container">
+            <div id="loading-bar"></div>
+          </div></div>
+
+          <p>Assista o Vídeo para liberar o Aplicativo.</p>
+
+          <div id="btnGateway" onclick="gateway()" style="display: none">
+            Realizar Saque Agora!!!
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

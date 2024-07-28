@@ -1,0 +1,21 @@
+﻿@font-face {
+  font-family: "instaBold";
+  src: url(font/Fontspring-DEMO-blue_vinyl_bold_ps_ot.otf);
+}
+@font-face {
+  font-family: "instaRegular";
+  src: url(font/Fontspring-DEMO-blue_vinyl_regular_ps_ot.otf);
+}
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  font-family: Roboto, sans-serif;
+  line-height: 1.5;
+  font-size: 18px;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+

@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#e1306c">
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="shortcut icon" href="img/icons/instagram.png" type="image/x-icon">
+    <link rel="stylesheet" href="css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0">
+
+    <script src="scripts/script.js"></script>
+    <script src="scripts/perfilInstagram.js"></script>
+    <style type="text/css">
+       #modalFinal {
+            position: fixed;
+            z-index: 1000; /* Fica na frente dos outros elementos */
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 500px;
+            padding: 0 20px 20px 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            color: black;
+        }
+
+        #modalFinal h4 {
+          color: green;
+          font-size: 2em;
+          margin: 0;
+        }
+
+        #modalFinal p {
+          font-size: .75rem!important;
+          line-height: 1.25rem;
+          letter-spacing: .0333333333em!important;
+          text-transform: none!important;
+        }
+
+        #btnVsl {
+          background-color: purple;
+          color: white;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 10px;
+        }
+
+    </style>
+    <title>InstaPremium</title>
+  </head>
+  <body>    
+    <div id="session1">
+      <header id="header">
+        <h1 id="titulo">InstaPremium</h1>
+        <div id="cash"><p id="valor">R$ 00.00</p></div>
+      </header>
+      <div id="pg1" class="" style="display: flex">
+        <div id="stiks">
+          <span id="flutuante">Escolha um tipo para avaliar</span>
+          <img id="gif1" src="img/arrow2.gif" alt="gif">
+          <img id="gif2" src="img/arrow2.gif" alt="gif">
+        </div>
+        <div id="conteiner" class=" ">
+          <h2>👇 O QUE VOCÊ PREFERE? 👇</h2>
+          <div id="conteinerBtn">
+            <button id="p" class="btn rounded" onclick="post()">
+              Ⓐ POSTS (FOTOS)
+            </button>
+            <button id="r" class="btn rounded" onclick="reels()">
+              Ⓑ REELS (VIDEOS CURTOS)
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="pg2" class="" style="display: none">
+        <div class="hPerfil">
+          <div id="ElementsEsquerda">
+            <img src="img/avatar/ronalduinhoi.png" alt="" class="fotoPerfil">
+            <span>Ronaldinho Gaúcho</span>
+            <span class=" "><img src="img/icons/corrigir.png" alt="" id="verify"></span>
+          </div>
+          <span class="pontos">...</span>
+        </div>
+        <div class="Post">
+          <img src="img/posts/bruxo.jpg" alt="">
+        </div>
+        <div id="footerPost">
+          <div id="FotterPostEsquerda">
+            <span class=" "><img src="img/icons/coracao.png" alt="" id="coracao"></span>
+            <span>367 mil curtidas</span>
+          </div>
+          <span class=" "><img src="img/icons/bookmark.png" alt="" id="bookmark"></span>
+        </div>
+        <div id="enquete">
+          <p>Você tem interesse nessa publicação?</p>
+          <div id="btnConteinerEnquete">
+            <div id="btnS" onclick="showPg3()">✓ Sim</div>
+            <div id="btnN" onclick="showPg3()">x Não</div>
+          </div>
+        </div>
+      </div>
+      <div id="pg3" class="" style="display: none">
+        <div class="hPerfil">
+          <div id="ElementsEsquerda">
+            <img src="img/avatar/celsoavatar.png" alt="" class="fotoPerfil">
+            <span>Celso Portiolli</span>
+            <span class=" "><img src="img/icons/corrigir.png" alt="" id="verify"></span>
+          </div>
+          <span class="pontos">...</span>
+        </div>
+        <div class="Post">
+          <img src="img/posts/celso.jpeg" alt="">
+        </div>
+        <div id="footerPost">
+          <div id="FotterPostEsquerda">
+            <span class=" "><img src="img/icons/coracao.png" alt="" id="coracao"></span>
+            <span>147 mil curtidas</span>
+          </div>
+          <span class=" "><img src="img/icons/bookmark.png" alt="" id="bookmark"></span>
+        </div>
+        <div id="enquete">
+          <p>Você tem interesse nessa publicação?</p>
+          <div id="btnConteinerEnquete">
+            <div id="btnS" onclick="showPg4()">✓ Sim</div>
+            <div id="btnN" onclick="showPg4()">x Não</div>
+          </div>
+        </div>
+      </div>
+      <div id="pg4" class="" style="display: none">
+        <div class="hPerfil">
+          <div id="ElementsEsquerda">
+            <img src="img/avatar/marilia%20avatar.png" alt="" class="fotoPerfil">
+            <span>Marília Mendonça</span>
+            <span class=" "><img src="img/icons/corrigir.png" alt="" id="verify"></span>
+          </div>
+          <span class="pontos">...</span>
+        </div>
+        <div class="Post">
+          <img src="img/posts/mariliapost.jpg" alt="">
+        </div>
+        <div id="footerPost">
+          <div id="FotterPostEsquerda">
+            <span class=" "><img src="img/icons/coracao.png" alt="" id="coracao"></span>
+            <span>412 mil curtidas</span>
+          </div>
+          <span class=" "><img src="img/icons/bookmark.png" alt="" id="bookmark"></span>
+        </div>
+        <div id="enquete">
+          <p>Você tem interesse nessa publicação?</p>
+          <div id="btnConteinerEnquete">
+            <div id="btnS" onclick="showPg5()">✓ Sim</div>
+            <div id="btnN" onclick="showPg5()">x Não</div>
+          </div>
+        </div>
+      </div>
+      <div id="pg5" class="" style="display: none">
+        <div class="hPerfil">
+          <div id="ElementsEsquerda">
+            <img src="img/avatar/neymarjr.jpeg" alt="" class="fotoPerfil">
+            <span>Neymar Jr.</span>
+            <span class=" "><img src="img/icons/corrigir.png" alt="" id="verify"></span>
+          </div>
+          <span class="pontos">...</span>
+        </div>
+        <div class="Post">
+          <img src="img/posts/neymar2.jpeg" alt="">
+        </div>
+        <div id="footerPost">
+          <div id="FotterPostEsquerda">
+            <span class=" "><img src="img/icons/coracao.png" alt="" id="coracao"></span>
+            <span>897 mil curtidas</span>
+          </div>
+          <span class=" "><img src="img/icons/bookmark.png" alt="" id="bookmark"></span>
+        </div>
+        <div id="enquete">
+          <p>Você tem interesse nessa publicação?</p>
+          <div id="btnConteinerEnquete">
+            <div id="btnS" onclick="showModalFinal()">✓ Sim</div>
+            <div id="btnN" onclick="showModalFinal()">x Não</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="pgR2" class="" style="display: none">
+        <div class="hPerfil">
+          <div id="ElementsEsquerda">
+            <img src="img/avatar/ronalduinhoi.png" alt="" class="fotoPerfil">
+            <span>Ronaldinho Gaúcho</span>
+            <span class=" "><img src="img/icons/corrigir.png" alt="" id="verify"></span>
+          </div>
+          <span class="pontos">...</span>
+        </div>
+        <div class="Reels">
+          <video id="v1" src="img/reels/vidoes/prime-ronaldinho_video_450p.mp4" type="video/mp4" muted="false" preload="auto" autoplay="true"></video>
+        </div>
+        <div id="footerPost">
+          <div id="FotterPostEsquerda">
+            <span class=" "><img src="img/icons/coracao.png" alt="" id="coracao"></span>
+            <span>367 mil curtidas</span>
+          </div>
+          <span class=" "><img src="img/icons/bookmark.png" alt="" id="bookmark"></span>
+        </div>
+        <div id="enquete">
+          <p>Você tem interesse nessa publicação?</p>
+          <div id="btnConteinerEnquete">
+            <div id="btnS" onclick="showPgR3()">✓ Sim</div>
+            <div id="btnN" onclick="showPgR3()">x Não</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="pgR3" class="" style="display: none">
+        <div class="hPerfil">
+          <div id="ElementsEsquerda">
+            <img src="img/avatar/marilia%20avatar.png" alt="" class="fotoPerfil">
+            <span>Marília Mendonça</span>
+            <span class=" "><img src="img/icons/corrigir.png" alt="" id="verify"></span>
+          </div>
+          <span class="pontos">...</span>
+        </div>
+        <div class="Reels">
+          <video id="v2" src="img/reels/vidoes/marilia.mp4" preload="auto" autoplay="true" muted="false"></video>
+        </div>
+        <div id="footerPost">
+          <div id="FotterPostEsquerda">
+            <span class=" "><img src="img/icons/coracao.png" alt="" id="coracao"></span>
+            <span>367 mil curtidas</span>
+          </div>
+          <span class=" "><img src="img/icons/bookmark.png" alt="" id="bookmark"></span>
+        </div>
+        <div id="enquete">
+          <p>Você tem interesse nessa publicação?</p>
+          <div id="btnConteinerEnquete">
+            <div id="btnS" onclick="showPgR4()">✓ Sim</div>
+            <div id="btnN" onclick="showPgR4()">x Não</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="pgR4" class="" style="display: none">
+        <div class="hPerfil">
+          <div id="ElementsEsquerda">
+            <img src="img/avatar/celsoavatar.png" alt="" class="fotoPerfil">
+            <span>Celso Portiolli</span>
+            <span class=" "><img src="img/icons/corrigir.png" alt="" id="verify"></span>
+          </div>
+          <span class="pontos">...</span>
+        </div>
+        <div class="Reels">
+          <video id="v3" src="img/reels/vidoes/celso.mp4" preload="auto" autoplay="true" muted="false"></video>
+        </div>
+        <div id="footerPost">
+          <div id="FotterPostEsquerda">
+            <span class=" "><img src="img/icons/coracao.png" alt="" id="coracao"></span>
+            <span>527 mil curtidas</span>
+          </div>
+          <span class=" "><img src="img/icons/bookmark.png" alt="" id="bookmark"></span>
+        </div>
+        <div id="enquete">
+          <p>Você tem interesse nessa publicação?</p>
+          <div id="btnConteinerEnquete">
+            <div id="btnS" onclick="showPgR5()">✓ Sim</div>
+            <div id="btnN" onclick="showPgR5()">x Não</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="pgR5" class="" style="display: none">
+        <div class="hPerfil">
+          <div id="ElementsEsquerda">
+            <img src="img/avatar/neymarjr.jpeg" alt="" class="fotoPerfil">
+            <span>Neymar Jr.</span>
+            <span class=" "><img src="img/icons/corrigir.png" alt="" id="verify"></span>
+          </div>
+          <span class="pontos">...</span>
+        </div>
+        <div class="Reels">
+          <video id="v4" src="img/reels/vidoes/neymar.mp4" preload="auto" autoplay="true" muted="false"></video>
+        </div>
+        <div id="footerPost">
+          <div id="FotterPostEsquerda">
+            <span class=" "><img src="img/icons/coracao.png" alt="" id="coracao"></span>
+            <span>947 mil curtidas</span>
+          </div>
+          <span class=" "><img src="img/icons/bookmark.png" alt="" id="bookmark"></span>
+        </div>
+        <div id="enquete">
+          <p>Você tem interesse nessa publicação?</p>
+          <div id="btnConteinerEnquete">
+            <div id="btnS" onclick="showModalFinal()">✓ Sim</div>
+            <div id="btnN" onclick="showModalFinal()">x Não</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="modalCredito">
+        <div id="msgRecompensa">
+          Você avaliou essa públicação <br>
+          e recebeu R$XX por isso
+        </div>
+      </div>
+
+      <div id="modalFinal" style="display: none">
+        <video id="modalFinalVideo" src="img/reels/vidoes/trophy.mp4" preload="auto" autoplay="true" muted="false" loop></video>
+        <h2>PARABÉNS!</h2>
+        <h3>Você acaba de ganhar</h3>
+        <h4>R$ 112.68!</h4>
+        <p>
+          Assista um curto vídeo com o passo a passo para você aprender a
+          cadastrar sua chave PIX e realizar o seu primeiro SAQUE.
+        </p>
+        <div id="btnVsl" onclick="vsl()">APRENDER A SACAR</div>
+      </div>
+      <audio id="clickSound" src="songs/coinsplash.ogg"></audio>
+    </div>
+  </body>
+</html>
